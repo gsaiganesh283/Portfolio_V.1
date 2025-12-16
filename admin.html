@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container" id="admin-panel" style="display: none;">
+        <!-- Header -->
+        <header class="admin-header">
+            <h1><i class="fas fa-user-shield"></i> Portfolio Admin Panel</h1>
+            <div class="admin-actions">
+                <a href="index.html" class="btn btn-secondary"><i class="fas fa-eye"></i> View Portfolio</a>
+                <button onclick="logout()" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </header>
+
+        <!-- Tabs -->
+        <div class="admin-tabs">
+            <button class="tab-btn active" onclick="showTab('hero')">Hero Section</button>
+            <button class="tab-btn" onclick="showTab('about')">About</button>
+            <button class="tab-btn" onclick="showTab('skills')">Skills</button>
+            <button class="tab-btn" onclick="showTab('projects')">Projects</button>
+            <button class="tab-btn" onclick="showTab('experience')">Experience</button>
+            <button class="tab-btn" onclick="showTab('testimonials')">Testimonials</button>
+            <button class="tab-btn" onclick="showTab('certifications')">Certifications</button>
+            <button class="tab-btn" onclick="showTab('contact')">Contact</button>
+            <button class="tab-btn" onclick="showTab('settings')">Settings</button>
+        </div>
+
+        <!-- Hero Section Tab -->
+        <div id="hero-tab" class="tab-content active">
+            <h2>Hero Section</h2>
+            <form id="hero-form" class="admin-form">
+                <div class="form-group">
+                    <label>Name (Navbar)</label>
+                    <input type="text" id="nav-name-input" required>
+                </div>
+                <div class="form-group">
+                    <label>Hero Title</label>
+                    <input type="text" id="hero-title-input" required>
+                </div>
+                <div class="form-group">
+                    <label>Hero Subtitle</label>
+                    <input type="text" id="hero-subtitle-input" required>
+                </div>
+                <div class="form-group">
+                    <label>Hero Description</label>
+                    <textarea id="hero-description-input" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+        </div>
+
+        <!-- About Section Tab -->
+        <div id="about-tab" class="tab-content">
+            <h2>About Section</h2>
+            <form id="about-form" class="admin-form">
+                <div class="form-group">
+                    <label>Profile Image URL</label>
+                    <input type="url" id="about-image-input" placeholder="https://...">
+                </div>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="about-name-input" required>
+                </div>
+                <div class="form-group">
+                    <label>Professional Title/Role</label>
+                    <input type="text" id="about-role-input" required>
+                </div>
+                <div class="form-group">
+                    <label>About Description</label>
+                    <textarea id="about-description-input" rows="5" required></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Years of Experience</label>
+                        <input type="text" id="stats-experience-input" placeholder="5+">
+                    </div>
+                    <div class="form-group">
+                        <label>Projects Completed</label>
+                        <input type="text" id="stats-projects-input" placeholder="50+">
+                    </div>
+                    <div class="form-group">
+                        <label>Happy Clients</label>
+                        <input type="text" id="stats-clients-input" placeholder="30+">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+        </div>
+
+        <!-- Skills Section Tab -->
+        <div id="skills-tab" class="tab-content">
+            <h2>Skills Section</h2>
+            <div class="admin-list-header">
+                <h3>Manage Skills</h3>
+                <button onclick="addSkillForm()" class="btn btn-success"><i class="fas fa-plus"></i> Add Skill</button>
+            </div>
+            <div id="skills-list" class="admin-list">
+                <!-- Skills will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Projects Section Tab -->
+        <div id="projects-tab" class="tab-content">
+            <h2>Projects Section</h2>
+            <div class="admin-list-header">
+                <h3>Manage Projects</h3>
+                <button onclick="addProjectForm()" class="btn btn-success"><i class="fas fa-plus"></i> Add Project</button>
+            </div>
+            <div id="projects-list" class="admin-list">
+                <!-- Projects will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Experience Section Tab -->
+        <div id="experience-tab" class="tab-content">
+            <h2>Experience Section</h2>
+            <div class="admin-list-header">
+                <h3>Manage Experience</h3>
+                <button onclick="addExperienceForm()" class="btn btn-success"><i class="fas fa-plus"></i> Add Experience</button>
+            </div>
+            <div id="experience-list" class="admin-list">
+                <!-- Experience will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Testimonials Section Tab -->
+        <div id="testimonials-tab" class="tab-content">
+            <h2>Testimonials Section</h2>
+            <div class="admin-list-header">
+                <h3>Manage Testimonials</h3>
+                <button onclick="addTestimonialForm()" class="btn btn-success"><i class="fas fa-plus"></i> Add Testimonial</button>
+            </div>
+            <div id="testimonials-list" class="admin-list">
+                <!-- Testimonials will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Certifications Section Tab -->
+        <div id="certifications-tab" class="tab-content">
+            <h2>Certifications & Achievements</h2>
+            <div class="admin-list-header">
+                <h3>Manage Certifications</h3>
+                <button onclick="addCertificationForm()" class="btn btn-success"><i class="fas fa-plus"></i> Add Certification</button>
+            </div>
+            <div id="certifications-list" class="admin-list">
+                <!-- Certifications will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Contact Section Tab -->
+        <div id="contact-tab" class="tab-content">
+            <h2>Contact Information</h2>
+            <form id="contact-form" class="admin-form">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="contact-email-input" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" id="contact-phone-input" required>
+                </div>
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" id="contact-location-input" required>
+                </div>
+                <div class="form-group">
+                    <label>LinkedIn URL</label>
+                    <input type="url" id="social-linkedin-input" placeholder="https://linkedin.com/in/...">
+                </div>
+                <div class="form-group">
+                    <label>GitHub URL</label>
+                    <input type="url" id="social-github-input" placeholder="https://github.com/...">
+                </div>
+                <div class="form-group">
+                    <label>Twitter URL</label>
+                    <input type="url" id="social-twitter-input" placeholder="https://twitter.com/...">
+                </div>
+                <div class="form-group">
+                    <label>Instagram URL</label>
+                    <input type="url" id="social-instagram-input" placeholder="https://instagram.com/...">
+                </div>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+        </div>
+
+        <!-- Settings Tab -->
+        <div id="settings-tab" class="tab-content">
+            <h2>Settings & Data Management</h2>
+            
+            <div class="admin-form">
+                <h3>Resume/CV</h3>
+                <div class="form-group">
+                    <label>Resume Download URL</label>
+                    <input type="url" id="resume-url-input" placeholder="https://...">
+                    <small>Link to your resume/CV file (PDF, Google Drive, etc.)</small>
+                </div>
+                <button onclick="saveResumeUrl()" class="btn btn-primary">Save Resume URL</button>
+            </div>
+
+            <div class="admin-form" style="margin-top: 2rem;">
+                <h3>Data Management</h3>
+                <p>Export your portfolio data or import from a backup file.</p>
+                <div class="form-row">
+                    <button onclick="exportData()" class="btn btn-secondary">
+                        <i class="fas fa-download"></i> Export Data
+                    </button>
+                    <button onclick="document.getElementById('import-file').click()" class="btn btn-secondary">
+                        <i class="fas fa-upload"></i> Import Data
+                    </button>
+                    <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(event)">
+                    <button onclick="resetData()" class="btn btn-danger">
+                        <i class="fas fa-redo"></i> Reset to Default
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Panel -->
+    <div class="login-container" id="login-panel">
+        <div class="login-box">
+            <h2><i class="fas fa-lock"></i> Admin Login</h2>
+            <p>Enter your credentials to access the admin panel</p>
+            <form id="login-form">
+                <div class="form-group">
+                    <input type="text" id="username" placeholder="Username" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <div id="login-error" class="error-message"></div>
+            </form>
+            <p class="login-hint">Default: admin / admin123</p>
+            <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
