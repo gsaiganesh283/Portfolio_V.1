@@ -54,10 +54,12 @@
     height: 100%;
     background: #0a0e27;
     z-index: 10002;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     transition: opacity 0.5s, visibility 0.5s;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .terminal-screen.hidden {
@@ -198,43 +200,141 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1329 100%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+    overflow: hidden;
 }
 
 .loading-screen.hidden {
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
 }
 
-.loader {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+.loading-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
     position: relative;
-    animation: rotate 1s linear infinite;
+    z-index: 2;
 }
 
-.loader-inner {
+.loader-advanced {
+    width: 140px;
+    height: 140px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.orbit {
+    position: absolute;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin linear infinite;
+}
+
+.orbit-1 {
+    width: 140px;
+    height: 140px;
+    border-top-color: #00d4ff;
+    border-right-color: #00d4ff;
+    animation-duration: 3s;
+}
+
+.orbit-2 {
+    width: 100px;
+    height: 100px;
+    border-bottom-color: #ff006e;
+    border-left-color: #ff006e;
+    animation-duration: 2s;
+    animation-direction: reverse;
+}
+
+.orbit-3 {
     width: 60px;
     height: 60px;
-    background: var(--darker-bg);
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    border-top-color: #8000ff;
+    border-right-color: #8000ff;
+    animation-duration: 4s;
 }
 
-@keyframes rotate {
+@keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+.loader-center {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #00d4ff, #8000ff);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    animation: pulse-scale 1.5s ease-in-out infinite;
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.6), inset 0 0 30px rgba(128, 0, 255, 0.3);
+}
+
+@keyframes pulse-scale {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(0, 212, 255, 0.6), inset 0 0 30px rgba(128, 0, 255, 0.3); }
+    50% { transform: scale(1.15); box-shadow: 0 0 50px rgba(0, 212, 255, 0.9), inset 0 0 50px rgba(128, 0, 255, 0.5); }
+}
+
+.loading-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #00d4ff, #ff006e, #8000ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 3px;
+    animation: float 3s ease-in-out infinite;
+    margin: 0;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.loading-bars {
+    display: flex;
+    gap: 6px;
+    align-items: flex-end;
+    height: 40px;
+}
+
+.bar {
+    width: 6px;
+    height: 20px;
+    background: linear-gradient(180deg, #00d4ff, #ff006e);
+    border-radius: 3px;
+    animation: rise 1.2s ease-in-out infinite;
+    animation-delay: var(--bar-delay);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.8);
+}
+
+@keyframes rise {
+    0%, 100% { height: 20px; opacity: 0.4; }
+    50% { height: 35px; opacity: 1; }
+}
+
+.loading-text {
+    font-size: 1rem;
+    color: #00d4ff;
+    letter-spacing: 2px;
+    animation: pulse 1.5s ease-in-out infinite;
+    margin: 0;
+    font-weight: 500;
 }
 
 .loading-screen p {

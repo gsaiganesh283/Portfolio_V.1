@@ -115,9 +115,12 @@ function skipTerminal() {
     document.getElementById('terminal-screen').classList.add('hidden');
 }
 
-// Start terminal on load
+// Auto-skip terminal on load
 window.addEventListener('load', () => {
-    setTimeout(typeTerminalCommand, 500);
+    // Automatically skip terminal screen
+    setTimeout(() => {
+        skipTerminal();
+    }, 100);
 });
 
 // 3D Background with Three.js
