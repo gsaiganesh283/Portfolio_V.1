@@ -579,8 +579,8 @@ window.addEventListener('load', () => {
         // Start typing animation after loading
         setTimeout(() => {
             typeText();
-        }, 500);
-    }, 1000);
+        }, 200);
+    }, 200);
 });
 
 // Initialize portfolio on page load
