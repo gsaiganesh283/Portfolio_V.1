@@ -107,6 +107,7 @@ function initializeData() {
                     description: 'A full-featured online shopping platform with payment integration',
                     image: 'https://via.placeholder.com/400x300',
                     tags: ['React', 'Node.js', 'MongoDB'],
+                    category: 'web',
                     github: 'https://github.com',
                     demo: 'https://example.com'
                 },
@@ -116,6 +117,7 @@ function initializeData() {
                     description: 'Collaborative task management tool for teams',
                     image: 'https://via.placeholder.com/400x300',
                     tags: ['Vue.js', 'Firebase', 'Tailwind'],
+                    category: 'web',
                     github: 'https://github.com',
                     demo: 'https://example.com'
                 }
@@ -232,7 +234,7 @@ function loadPortfolioContent() {
     document.getElementById('stats-projects').textContent = data.about.stats.projects;
     document.getElementById('stats-clients').textContent = data.about.stats.clients;
 
-    // Skills section
+    // Skills section with radar chart
     const skillsContainer = document.getElementById('skills-container');
     skillsContainer.innerHTML = '';
     data.skills.forEach(skill => {
@@ -251,12 +253,18 @@ function loadPortfolioContent() {
         skillsContainer.appendChild(skillCard);
     });
 
-    // Projects section
+    // Create radar chart if function exists
+    if (typeof window.createSkillsRadarChart === 'function') {
+        window.createSkillsRadarChart(data.skills);
+    }
+
+    // Projects section with categories
     const projectsContainer = document.getElementById('projects-container');
     projectsContainer.innerHTML = '';
     data.projects.forEach(project => {
         const projectCard = document.createElement('div');
         projectCard.className = 'project-card';
+        projectCard.setAttribute('data-category', project.category || 'web');
         projectCard.innerHTML = `
             <img src="${project.image}" alt="${project.title}" class="project-image">
             <div class="project-content">
