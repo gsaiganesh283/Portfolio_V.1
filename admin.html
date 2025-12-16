@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    
     <div class="admin-container" id="admin-panel" style="display: none;">
         <!-- Header -->
         <header class="admin-header">
@@ -243,5 +247,51 @@
     </div>
 
     <script src="admin.js"></script>
+    
+    <!-- Custom Cursor Script -->
+    <script>
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        
+        let mouseX = 0, mouseY = 0;
+        let outlineX = 0, outlineY = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            cursorDot.style.left = mouseX + 'px';
+            cursorDot.style.top = mouseY + 'px';
+        });
+        
+        // Smooth follow effect for outline
+        function animateOutline() {
+            outlineX += (mouseX - outlineX) * 0.15;
+            outlineY += (mouseY - outlineY) * 0.15;
+            
+            cursorOutline.style.left = outlineX + 'px';
+            cursorOutline.style.top = outlineY + 'px';
+            
+            requestAnimationFrame(animateOutline);
+        }
+        animateOutline();
+        
+        // Enlarge cursor on hover over clickable elements
+        const hoverElements = document.querySelectorAll('button, a, input, textarea, select, .btn');
+        hoverElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursorDot.style.width = '20px';
+                cursorDot.style.height = '20px';
+                cursorOutline.style.width = '60px';
+                cursorOutline.style.height = '60px';
+            });
+            element.addEventListener('mouseleave', () => {
+                cursorDot.style.width = '12px';
+                cursorDot.style.height = '12px';
+                cursorOutline.style.width = '45px';
+                cursorOutline.style.height = '45px';
+            });
+        });
+    </script>
 </body>
 </html>

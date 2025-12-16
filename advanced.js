@@ -478,17 +478,24 @@ function initSmoothScroll() {
 // Hover interactions for links and buttons
 function initHoverInteractions() {
     const cursorOutline = document.querySelector('.cursor-outline');
-    if (!cursorOutline) return;
+    const cursorDot = document.querySelector('.cursor-dot');
+    if (!cursorOutline || !cursorDot) return;
 
-    document.querySelectorAll('a, button').forEach(el => {
+    document.querySelectorAll('a, button, .btn, input, textarea, select, .project-card, .skill-card').forEach(el => {
         el.addEventListener('mouseenter', () => {
-            cursorOutline.style.width = '60px';
-            cursorOutline.style.height = '60px';
+            cursorOutline.style.width = '70px';
+            cursorOutline.style.height = '70px';
+            cursorDot.style.width = '20px';
+            cursorDot.style.height = '20px';
+            cursorDot.style.background = 'linear-gradient(135deg, #ff006e, #8000ff)';
         });
         
         el.addEventListener('mouseleave', () => {
-            cursorOutline.style.width = '40px';
-            cursorOutline.style.height = '40px';
+            cursorOutline.style.width = '45px';
+            cursorOutline.style.height = '45px';
+            cursorDot.style.width = '12px';
+            cursorDot.style.height = '12px';
+            cursorDot.style.background = 'linear-gradient(135deg, #00d4ff, #ff006e)';
         });
     });
 }
