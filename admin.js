@@ -1,3 +1,6 @@
+// Backend API base
+const API_URL = (window.__API_URL__ || 'http://localhost:5050');
+
 // Admin credentials (in a real application, this should be handled server-side)
 const ADMIN_CREDENTIALS = {
     username: 'admin',
@@ -63,10 +66,27 @@ function loadData() {
 // Save data to localStorage
 function saveData(data) {
     localStorage.setItem('portfolioData', JSON.stringify(data));
+    // Sync to backend (non-blocking)
+    try {
+        fetch(`${API_URL}/api/portfolio`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+    } catch (_) { /* ignore */ }
 }
 
 // Load admin data into forms
-function loadAdminData() {
+async function loadAdminData() {
+    // Try to pull latest from backend and sync to localStorage first
+    try {
+        const res = await fetch(`${API_URL}/api/portfolio`, { cache: 'no-store' });
+        if (res.ok) {
+            const fresh = await res.json();
+            localStorage.setItem('portfolioData', JSON.stringify(fresh));
+        }
+    } catch (_) { /* fallback to local */ }
+
     const data = loadData();
     if (!data) return;
 

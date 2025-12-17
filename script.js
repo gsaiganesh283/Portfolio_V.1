@@ -1,4 +1,6 @@
 // Typing animation
+// API base for backend database (falls back to localhost:5050 in dev)
+const API_URL = (window.__API_URL__ || 'http://localhost:5050');
 const typingTexts = [
     "Full Stack Developer",
     "UI/UX Designer",
@@ -205,19 +207,41 @@ function initializeData() {
 }
 
 // Load data from localStorage
-function loadData() {
+async function loadData() {
+    // Try API first
+    try {
+        const res = await fetch(`${API_URL}/api/portfolio`, { cache: 'no-store' });
+        if (res.ok) {
+            const data = await res.json();
+            // keep localStorage in sync for offline usage
+            localStorage.setItem('portfolioData', JSON.stringify(data));
+            return data;
+        }
+    } catch (e) {
+        // ignore and fallback
+    }
+    // Fallback to localStorage
     initializeData();
     return JSON.parse(localStorage.getItem('portfolioData'));
 }
 
 // Save data to localStorage
 function saveData(data) {
+    // Save locally for instant UI
     localStorage.setItem('portfolioData', JSON.stringify(data));
+    // Attempt to persist to API (fire-and-forget)
+    try {
+        fetch(`${API_URL}/api/portfolio`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+    } catch (_) { /* no-op */ }
 }
 
 // Load and display portfolio content
-function loadPortfolioContent() {
-    const data = loadData();
+async function loadPortfolioContent() {
+    const data = await loadData();
 
     // Hero section
     document.getElementById('nav-name').textContent = data.hero.navName;
@@ -584,8 +608,8 @@ window.addEventListener('load', () => {
 });
 
 // Initialize portfolio on page load
-document.addEventListener('DOMContentLoaded', () => {
-    loadPortfolioContent();
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadPortfolioContent();
     
     // Animate statistics counters when they come into view
     const observerOptions = {
