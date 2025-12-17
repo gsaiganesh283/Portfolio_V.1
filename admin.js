@@ -1,5 +1,5 @@
-// Backend API base
-const API_URL = (window.__API_URL__ || 'http://localhost:5050');
+// Backend API base (empty string uses same domain for PHP)
+const API_URL = (window.__API_URL__ || '');
 
 // Admin credentials (in a real application, this should be handled server-side)
 const ADMIN_CREDENTIALS = {
@@ -66,9 +66,9 @@ function loadData() {
 // Save data to localStorage
 function saveData(data) {
     localStorage.setItem('portfolioData', JSON.stringify(data));
-    // Sync to backend (non-blocking)
+    // Sync to PHP backend (non-blocking)
     try {
-        fetch(`${API_URL}/api/portfolio`, {
+        fetch(`${API_URL}/api/portfolio.php`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
@@ -78,9 +78,9 @@ function saveData(data) {
 
 // Load admin data into forms
 async function loadAdminData() {
-    // Try to pull latest from backend and sync to localStorage first
+    // Try to pull latest from PHP backend and sync to localStorage first
     try {
-        const res = await fetch(`${API_URL}/api/portfolio`, { cache: 'no-store' });
+        const res = await fetch(`${API_URL}/api/portfolio.php`, { cache: 'no-store' });
         if (res.ok) {
             const fresh = await res.json();
             localStorage.setItem('portfolioData', JSON.stringify(fresh));

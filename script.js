@@ -1,6 +1,6 @@
 // Typing animation
-// API base for backend database (falls back to localhost:5050 in dev)
-const API_URL = (window.__API_URL__ || 'http://localhost:5050');
+// API base for PHP backend (empty string uses same domain)
+const API_URL = (window.__API_URL__ || '');
 const typingTexts = [
     "Full Stack Developer",
     "UI/UX Designer",
@@ -208,9 +208,9 @@ function initializeData() {
 
 // Load data from localStorage
 async function loadData() {
-    // Try API first
+    // Try PHP API first
     try {
-        const res = await fetch(`${API_URL}/api/portfolio`, { cache: 'no-store' });
+        const res = await fetch(`${API_URL}/api/portfolio.php`, { cache: 'no-store' });
         if (res.ok) {
             const data = await res.json();
             // keep localStorage in sync for offline usage
@@ -231,7 +231,7 @@ function saveData(data) {
     localStorage.setItem('portfolioData', JSON.stringify(data));
     // Attempt to persist to API (fire-and-forget)
     try {
-        fetch(`${API_URL}/api/portfolio`, {
+        fetch(`${API_URL}/api/portfolio.php`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
