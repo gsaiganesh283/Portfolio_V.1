@@ -1,0 +1,66 @@
+nohup: ignoring input
+[Thu Jan  1 14:51:09 2026] PHP 8.0.30 Development Server (http://localhost:3000) started
+[Thu Jan  1 14:51:10 2026] [::1]:55582 Accepted
+[Thu Jan  1 14:51:10 2026] PHP Warning:  require_once(/workspaces/Portfolio_V.1/api/../vendor/autoload.php): Failed to open stream: No such file or directory in /workspaces/Portfolio_V.1/api/mongodb.php on line 21
+[Thu Jan  1 14:51:10 2026] PHP Fatal error:  Uncaught Error: Failed opening required '/workspaces/Portfolio_V.1/api/../vendor/autoload.php' (include_path='.:/opt/php/8.0.30/lib/php') in /workspaces/Portfolio_V.1/api/mongodb.php:21
+Stack trace:
+#0 /workspaces/Portfolio_V.1/api/portfolio.php(19): require_once()
+#1 {main}
+  thrown in /workspaces/Portfolio_V.1/api/mongodb.php on line 21
+[Thu Jan  1 14:51:10 2026] [::1]:55582 [500]: GET /api/portfolio.php - Uncaught Error: Failed opening required '/workspaces/Portfolio_V.1/api/../vendor/autoload.php' (include_path='.:/opt/php/8.0.30/lib/php') in /workspaces/Portfolio_V.1/api/mongodb.php:21
+Stack trace:
+#0 /workspaces/Portfolio_V.1/api/portfolio.php(19): require_once()
+#1 {main}
+  thrown in /workspaces/Portfolio_V.1/api/mongodb.php on line 21
+[Thu Jan  1 14:51:10 2026] [::1]:55582 Closing
+[Thu Jan  1 14:51:11 2026] [::1]:55594 Accepted
+[Thu Jan  1 14:51:11 2026] [::1]:55594 [200]: GET /
+[Thu Jan  1 14:51:11 2026] [::1]:55594 Closing
+[Thu Jan  1 14:51:11 2026] [::1]:55606 Accepted
+[Thu Jan  1 14:51:11 2026] [::1]:55622 Accepted
+[Thu Jan  1 14:51:11 2026] [::1]:55638 Accepted
+[Thu Jan  1 14:51:11 2026] [::1]:55606 [200]: GET /script.js
+[Thu Jan  1 14:51:11 2026] [::1]:55606 Closing
+[Thu Jan  1 14:51:11 2026] [::1]:55638 [200]: GET /styles.css
+[Thu Jan  1 14:51:11 2026] [::1]:55638 Closing
+[Thu Jan  1 14:51:11 2026] [::1]:55622 [200]: GET /advanced.js
+[Thu Jan  1 14:51:11 2026] [::1]:55622 Closing
+[Thu Jan  1 14:51:20 2026] [::1]:54004 Accepted
+[Thu Jan  1 14:51:20 2026] PHP Warning:  require_once(/workspaces/Portfolio_V.1/api/../vendor/autoload.php): Failed to open stream: No such file or directory in /workspaces/Portfolio_V.1/api/mongodb.php on line 21
+[Thu Jan  1 14:51:20 2026] PHP Fatal error:  Uncaught Error: Failed opening required '/workspaces/Portfolio_V.1/api/../vendor/autoload.php' (include_path='.:/opt/php/8.0.30/lib/php') in /workspaces/Portfolio_V.1/api/mongodb.php:21
+Stack trace:
+#0 /workspaces/Portfolio_V.1/api/portfolio.php(19): require_once()
+#1 {main}
+  thrown in /workspaces/Portfolio_V.1/api/mongodb.php on line 21
+[Thu Jan  1 14:51:20 2026] [::1]:54004 [500]: GET /api/portfolio.php - Uncaught Error: Failed opening required '/workspaces/Portfolio_V.1/api/../vendor/autoload.php' (include_path='.:/opt/php/8.0.30/lib/php') in /workspaces/Portfolio_V.1/api/mongodb.php:21
+Stack trace:
+#0 /workspaces/Portfolio_V.1/api/portfolio.php(19): require_once()
+#1 {main}
+  thrown in /workspaces/Portfolio_V.1/api/mongodb.php on line 21
+[Thu Jan  1 14:51:20 2026] [::1]:54004 Closing
+[Thu Jan  1 14:51:42 2026] [::1]:35010 Accepted
+[Thu Jan  1 14:51:42 2026] PHP Warning:  require_once(/workspaces/Portfolio_V.1/vendor/autoload.php): Failed to open stream: No such file or directory in /workspaces/Portfolio_V.1/api/mongodb.php on line 21
+[Thu Jan  1 14:51:42 2026] PHP Fatal error:  Uncaught Error: Failed opening required '/workspaces/Portfolio_V.1/vendor/autoload.php' (include_path='.:/opt/php/8.0.30/lib/php') in /workspaces/Portfolio_V.1/api/mongodb.php:21
+Stack trace:
+#0 /workspaces/Portfolio_V.1/api/portfolio.php(19): require_once()
+#1 {main}
+  thrown in /workspaces/Portfolio_V.1/api/mongodb.php on line 21
+[Thu Jan  1 14:51:42 2026] [::1]:35010 [500]: GET /api/portfolio.php - Uncaught Error: Failed opening required '/workspaces/Portfolio_V.1/vendor/autoload.php' (include_path='.:/opt/php/8.0.30/lib/php') in /workspaces/Portfolio_V.1/api/mongodb.php:21
+Stack trace:
+#0 /workspaces/Portfolio_V.1/api/portfolio.php(19): require_once()
+#1 {main}
+  thrown in /workspaces/Portfolio_V.1/api/mongodb.php on line 21
+[Thu Jan  1 14:51:42 2026] [::1]:35010 Closing
+[Thu Jan  1 14:51:48 2026] [::1]:50684 Accepted
+[Thu Jan  1 14:51:48 2026] PHP Warning:  require_once(/workspaces/Portfolio_V.1/vendor/autoload.php): Failed to open stream: No such file or directory in /workspaces/Portfolio_V.1/api/mongodb.php on line 21
+[Thu Jan  1 14:51:48 2026] PHP Fatal error:  Uncaught Error: Failed opening required '/workspaces/Portfolio_V.1/vendor/autoload.php' (include_path='.:/opt/php/8.0.30/lib/php') in /workspaces/Portfolio_V.1/api/mongodb.php:21
+Stack trace:
+#0 /workspaces/Portfolio_V.1/api/portfolio.php(19): require_once()
+#1 {main}
+  thrown in /workspaces/Portfolio_V.1/api/mongodb.php on line 21
+[Thu Jan  1 14:51:48 2026] [::1]:50684 [500]: GET /api/portfolio.php - Uncaught Error: Failed opening required '/workspaces/Portfolio_V.1/vendor/autoload.php' (include_path='.:/opt/php/8.0.30/lib/php') in /workspaces/Portfolio_V.1/api/mongodb.php:21
+Stack trace:
+#0 /workspaces/Portfolio_V.1/api/portfolio.php(19): require_once()
+#1 {main}
+  thrown in /workspaces/Portfolio_V.1/api/mongodb.php on line 21
+[Thu Jan  1 14:51:48 2026] [::1]:50684 Closing

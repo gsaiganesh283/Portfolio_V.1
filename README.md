@@ -1,13 +1,12 @@
 # Portfolio Website
 
-An **ultra-advanced**, cutting-edge portfolio website with unique features not commonly found elsewhere. Built with modern web technologies including Three.js, GSAP, and Chart.js.
+An **ultra-advanced**, cutting-edge portfolio website with unique features not commonly found elsewhere. Built with modern web technologies including Three.js, GSAP, Chart.js, Node.js backend, and MongoDB database.
 
 ## 🚀 Advanced Features
 
 ### **Visual Excellence**
 - **3D Interactive Background** - WebGL-powered particle system with Three.js
 - **Custom Magnetic Cursor** - Smooth cursor with trailing effect and magnetic buttons
-- **Terminal Welcome Screen** - Hacker-style boot sequence with command typing
 - **Glitch Text Effects** - Matrix-style text animations on hover
 - **Text Scramble Effect** - Dynamic character morphing
 - **Parallax Scrolling** - Multi-layer depth with GSAP ScrollTrigger
@@ -26,18 +25,19 @@ An **ultra-advanced**, cutting-edge portfolio website with unique features not c
 
 ### **User Experience**
 - **Dark/Light Mode Toggle** - Seamless theme switching
-- **Loading Screen** - Elegant loader with animations
 - **Scroll to Top Button** - Quick navigation
 - **Testimonials Slider** - Client reviews with ratings
 - **Certifications Showcase** - Achievement display with icons
 - **Custom Scrollbar** - Branded design matching theme
 - **Mobile Hamburger Menu** - Smooth animated navigation
 
-### **Hidden Features**
-- **Konami Code Easter Egg** - Try the classic cheat code! ⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️BA
-- **Performance Console** - Development insights in browser console
+### **Database & Backend**
+- **MongoDB Integration** - Cloud-based data persistence with MongoDB Atlas
+- **Express.js Backend** - RESTful API for portfolio data operations
+- **Real-time Sync** - Admin changes sync instantly to database
+- **Secure API** - Environment variable protection and CORS security
 
-## 📚 Public Portfolio (index.html)
+## 📚 Public Portfolio (index.php)
 - **Hero Section**: Eye-catching introduction with your name and tagline
 - **About Section**: Personal information, professional title, and statistics
 - **Skills Section**: Showcase your skills with progress bars
@@ -46,7 +46,7 @@ An **ultra-advanced**, cutting-edge portfolio website with unique features not c
 - **Contact Section**: Contact information and social media links
 - **Responsive Design**: Works perfectly on all devices
 
-### Admin Panel (admin.html)
+### Admin Panel (admin.php)
 - **Secure Login**: Protected admin area (default: admin/admin123)
 - **Easy Content Management**: Update all sections through intuitive forms
 - **Real-time Updates**: Changes reflect immediately on the public page

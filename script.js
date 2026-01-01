@@ -1,6 +1,8 @@
 // Typing animation
-// API base for PHP backend (empty string uses same domain)
-const API_URL = (window.__API_URL__ || '');
+// API base for Node.js/MongoDB backend
+// For local development: http://localhost:5050
+// For production: update to your deployed backend URL
+const API_URL = (window.__API_URL__ || 'http://localhost:5050');
 const typingTexts = [
     "Full Stack Developer",
     "UI/UX Designer",
@@ -595,16 +597,9 @@ if (typeof particlesJS !== 'undefined') {
     });
 }
 
-// Loading screen
+// Start typing animation on load
 window.addEventListener('load', () => {
-    const loadingScreen = document.getElementById('loading-screen');
-    setTimeout(() => {
-        loadingScreen.classList.add('hidden');
-        // Start typing animation after loading
-        setTimeout(() => {
-            typeText();
-        }, 200);
-    }, 200);
+    typeText();
 });
 
 // Initialize portfolio on page load
