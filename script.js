@@ -595,16 +595,9 @@ if (typeof particlesJS !== 'undefined') {
     });
 }
 
-// Loading screen
+// Start typing animation immediately
 window.addEventListener('load', () => {
-    const loadingScreen = document.getElementById('loading-screen');
-    setTimeout(() => {
-        loadingScreen.classList.add('hidden');
-        // Start typing animation after loading
-        setTimeout(() => {
-            typeText();
-        }, 200);
-    }, 200);
+    typeText();
 });
 
 // Initialize portfolio on page load
